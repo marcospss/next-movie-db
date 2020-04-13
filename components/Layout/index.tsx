@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import Theme from './theme';
 import { Normalize } from './normalize';
 import { Container } from './styles';
-import Header from '@components/Header';
+import HeaderGlobal from '@components/HeaderGlobal';
 import Footer from '@components/Footer';
 
 type Props = {
@@ -22,7 +22,7 @@ const Layout: React.FC<Props> = ({ children, title = '' }) => (
     <ThemeProvider theme={Theme}>
       <Normalize />
       <Container>
-        <Header />
+        <HeaderGlobal />
         {children}
         <Footer />
       </Container>
