@@ -19,7 +19,10 @@
       "jsx": "preserve",
       "baseUrl": "./",
       "paths": {
-        "@components/*": ["./components/*"]
+        "@settings/*": ["./settings/*"],
+        "@components/*": ["./components/*"],
+        "@services/*": ["./services/*"],
+        "@models/*": ["./models/*"]
       }
     },
     "exclude": [
