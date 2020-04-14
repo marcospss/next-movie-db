@@ -1,6 +1,6 @@
 import instance from '@settings/axios';
-import { paramsDefault } from '@settings/api';
-import { TvResults, TvDetails } from '@models/tv';
+import { paramsDefault } from 'settings/api';
+import { TvResults, TvDetails } from 'models/tv';
 
 export class Tv {
   discover({ sortBy = 'popularity.desc', page = 1 }) {

@@ -1,6 +1,6 @@
-import instance from './../settings/axios';
-import { paramsDefault } from './../settings/api';
-import { MovieResults, MoviesDetails } from '@models/movie';
+import instance from 'settings/axios';
+import { paramsDefault } from 'settings/api';
+import { MovieResults, MoviesDetails } from 'models/movie';
 
 export class Movie {
   discover({ sortBy = 'popularity.desc', page = 1 }) {

@@ -5,8 +5,8 @@ import { ThemeProvider } from 'styled-components';
 import Theme from './theme';
 import { Normalize } from './normalize';
 import { Container } from './styles';
-import HeaderGlobal from '@components/HeaderGlobal';
-import Footer from '@components/Footer';
+import HeaderGlobal from 'components/HeaderGlobal';
+import Footer from 'components/Footer';
 
 type Props = {
   title?: string;

@@ -1,6 +1,6 @@
-import instance from '@settings/axios';
-import { paramsDefault } from '@settings/api';
-import { Genres, Credits } from '@models/common';
+import instance from 'settings/axios';
+import { paramsDefault } from 'settings/api';
+import { Genres, Credits } from 'models/common';
 
 export class Common {
   genre({ mediaType }) {
