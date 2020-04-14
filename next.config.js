@@ -12,6 +12,6 @@ module.exports = {
     return config;
   },
   env: {
-    APY_KEY: process.env.APY_KEY,
+    API_KEY: process.env.API_KEY,
   },
 }
