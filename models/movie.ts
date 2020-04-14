@@ -1,16 +1,16 @@
 import { Genres, ProductionCompanies } from './common';
 
-interface ProductionCountries {
+type ProductionCountries = {
   iso_3166_1: string;
   name: string;
-}
+};
 
-interface SpokenLanguages {
+type SpokenLanguages = {
   iso_639_1: string;
   name: string;
-}
+};
 
-export interface MovieItem {
+export type MovieItem = {
   poster_path: string;
   adult: boolean;
   overview: string;
@@ -25,9 +25,9 @@ export interface MovieItem {
   vote_count: number;
   video: false;
   vote_average: string;
-}
+};
 
-export interface MoviesDetails {
+export type MoviesDetails = {
   adult: boolean;
   backdrop_path: string | null;
   belongs_to_collection: null | object;
@@ -53,11 +53,11 @@ export interface MoviesDetails {
   video: boolean;
   vote_average: number;
   vote_count: number;
-}
+};
 
-export interface MovieResults {
+export type MovieResults = {
   page: number;
   results: MovieItem[];
   total_pages: number;
   total_results: number;
-}
+};

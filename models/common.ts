@@ -1,9 +1,9 @@
-export interface Genres {
+export type Genres = {
   id: number;
   name: string;
-}
+};
 
-export interface Cast {
+export type Cast = {
   cast_id?: number;
   character: string;
   credit_id: string;
@@ -12,9 +12,9 @@ export interface Cast {
   name: string;
   order: number;
   profile_path: string | null;
-}
+};
 
-export interface Crew {
+export type Crew = {
   credit_id: string;
   department: string;
   gender: number | null;
@@ -22,29 +22,24 @@ export interface Crew {
   job: string;
   name: string;
   profile_path: string | null;
-}
+};
 
-export interface Genres {
-  id: number;
-  name: string;
-}
-
-export interface CreatedBy {
+export type CreatedBy = {
   id: number;
   credit_id: string;
   name: string;
   profile_path: string;
-}
+};
 
-export interface ProductionCompanies {
+export type ProductionCompanies = {
   id: number;
   logo_path: null | string;
   name: string;
   origin_country: string;
-}
+};
 
-export interface Credits {
+export type Credits = {
   id: number;
   cast: Cast[];
   crew: Crew[];
-}
+};

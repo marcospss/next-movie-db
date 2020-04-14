@@ -1,6 +1,6 @@
 import { Genres, CreatedBy, ProductionCompanies } from './common';
 
-interface TvItem {
+type TvItem = {
   poster_path: string | null;
   popularity: number;
   id: number;
@@ -14,16 +14,16 @@ interface TvItem {
   vote_count: number;
   name: string;
   original_name: string;
-}
+};
 
-interface Networks {
+type Networks = {
   name: string;
   id: number;
   logo_path: string;
   origin_country: string;
-}
+};
 
-interface Seasons {
+type Seasons = {
   air_date: string;
   episode_count: number;
   id: number;
@@ -31,9 +31,9 @@ interface Seasons {
   overview: string;
   poster_path: string;
   season_number: number;
-}
+};
 
-export interface TvDetails {
+export type TvDetails = {
   backdrop_path: string | null;
   created_by: CreatedBy[];
   episode_run_time: number[];
@@ -45,17 +45,17 @@ export interface TvDetails {
   languages: string[];
   last_air_date: string;
   last_episode_to_air: {
-    air_date: string,
-    episode_number: number,
-    id: number,
-    name: string,
-    overview: string,
-    production_code: string,
-    season_number: number,
-    show_id: number,
-    still_path: string,
-    vote_average: number,
-    vote_count: number,
+    air_date: string;
+    episode_number: number;
+    id: number;
+    name: string;
+    overview: string;
+    production_code: string;
+    season_number: number;
+    show_id: number;
+    still_path: string;
+    vote_average: number;
+    vote_count: number;
   };
   name: string;
   next_episode_to_air: null;
@@ -74,11 +74,11 @@ export interface TvDetails {
   type: string;
   vote_average: number;
   vote_count: number;
-}
+};
 
-export interface TvResults {
+export type TvResults = {
   page: number;
   results: TvItem[];
   total_pages: number;
   total_results: number;
-}
+};
