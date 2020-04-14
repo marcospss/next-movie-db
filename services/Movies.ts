@@ -1,5 +1,5 @@
-import instance from '@settings/axios';
-import { paramsDefault } from '@settings/api';
+import instance from './../settings/axios';
+import { paramsDefault } from './../settings/api';
 import { MovieResults, MoviesDetails } from '@models/movie';
 
 export class Movie {
