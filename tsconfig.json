@@ -23,7 +23,7 @@
         "@services/*": ["./services/*"],
         "@models/*": ["./models/*"],
         "@components/*": ["./components/*"],
-        "@fetch-data/*": ["./fetch-data/*"]
+        "@libs/*": ["libs/*"]
       }
     },
     "exclude": [
