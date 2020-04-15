@@ -1,8 +1,8 @@
-import { NextPage } from 'next';
+import { NextPage, GetStaticProps } from 'next';
 
 import { Movie } from '@services/Movies';
 import { MovieResults } from '@models/movie';
-// import { useFetchMoviePopular } from '@fetch-data/movie';
+// import { useFetchMoviePopular } from '@libs/movie';
 import Layout from '@components/Layout';
 import Grid from '@components/Grid';
 
@@ -22,10 +22,12 @@ const IndexPage: NextPage<HomeProps> = ({ popular }) => {
   );
 };
 
-IndexPage.getInitialProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const popularResponse = await movies.popular({ page: 1 });
   return {
-    popular: popularResponse.data,
+    props: {
+      popular: popularResponse.data,
+    },
   };
 };
 

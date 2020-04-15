@@ -10,14 +10,16 @@
             "@services": "./services",
             "@models": "./models",
             "@components": "./components",
-            "@fetch-data": "./fetch-data"
+            "@libs": "./libs"
           }
         }
       ],
       [
         "styled-components", 
         { 
-          "ssr": true
+          "ssr": true,
+          "displayName": false,
+          "preprocess": false
         }
       ]
     ]
