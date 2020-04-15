@@ -6,7 +6,11 @@
         {
           "root": ["./"],
           "alias": {
-            "@components": "./components"
+            "@settings": "./settings",
+            "@services": "./services",
+            "@models": "./models",
+            "@components": "./components",
+            "@fetch-data": "./fetch-data"
           }
         }
       ],

@@ -1,13 +1,14 @@
-import instance from 'settings/axios';
-import { paramsDefault } from 'settings/api';
-import { Genres, Credits } from 'models/common';
+import instance from '@settings/axios';
+import { paramsDefault } from '@settings/api';
+import { Genres, Credits } from '@models/common';
+import { params } from '@models/api';
 
 export class Common {
-  genre({ mediaType }) {
+  genre({ mediaType }: params) {
     return instance.get<Genres>(`/genre/${mediaType}/list?${paramsDefault}`);
   }
 
-  credits({ mediaType, mediaId }) {
+  credits({ mediaType, mediaId }: params) {
     return instance.get<Credits>(`/${mediaType}/${mediaId}/credits?${paramsDefault}`);
   }
 }

@@ -56,8 +56,8 @@ export type MoviesDetails = {
 };
 
 export type MovieResults = {
-  page: number;
-  results: MovieItem[];
-  total_pages: number;
-  total_results: number;
+  page?: number;
+  results?: MovieItem[];
+  total_pages?: number;
+  total_results?: number;
 };

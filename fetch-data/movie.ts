@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import { Movie } from 'services/Movies';
-import { MovieResults } from 'models/movie';
+import { Movie } from '@services/Movies';
+import { MovieResults } from '@models/movie';
 
 const movies = new Movie();
 
@@ -14,7 +14,7 @@ async function fetchPopular() {
   }
 }
 
-export function useFetchMovie() {
+export function useFetchMoviePopular() {
   const [error, setError] = useState(false);
   const [popular, setPopular] = useState<MovieResults>();
   useEffect(() => {

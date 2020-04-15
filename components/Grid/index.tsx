@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 
 import { Section, Figure } from './styles';
-import { MovieResults } from 'models/movie';
+import { MovieResults } from '@models/movie';
 // https://www.themoviedb.org/movie/278-the-shawshank-redemption?language=en-US
-const Grid: React.FC<MovieResults> = ({ results }) => (
+const Grid: FC<MovieResults> = ({ results }) => (
   <Section>
     {results &&
       results.map(item => (
