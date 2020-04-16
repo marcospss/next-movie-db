@@ -109,6 +109,7 @@ body {
   font-family: sans-serif;
   /* 3 */
   text-align: left;
+  margin: 0;
 }
 
 
