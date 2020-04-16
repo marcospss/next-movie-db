@@ -1,27 +1,18 @@
 {
-    "presets": [["next/babel"]],
-    "plugins": [
-      [
-        "module-resolver",
-        {
-          "root": ["./"],
-          "alias": {
-            "@settings": "./settings",
-            "@services": "./services",
-            "@models": "./models",
-            "@components": "./components",
-            "@libs": "./libs"
-          }
+  "presets": [["next/babel"]],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@settings": "./settings",
+          "@services": "./services",
+          "@models": "./models",
+          "@components": "./components",
+          "@libs": "./libs"
         }
-      ],
-      [
-        "styled-components", 
-        { 
-          "ssr": true,
-          "displayName": false,
-          "preprocess": false
-        }
-      ]
+      }
     ]
-  }
-  
+  ]
+}

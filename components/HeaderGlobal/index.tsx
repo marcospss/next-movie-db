@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-import { Header } from './styles';
-
 const HeaderGlobal: React.FC = () => (
-  <Header>
+  <header>
     <h1>The Movie Database (TMDb)</h1>
     <nav>
       <ul>
@@ -25,7 +23,7 @@ const HeaderGlobal: React.FC = () => (
         </li>
       </ul>
     </nav>
-  </Header>
+  </header>
 );
 
 export default HeaderGlobal;

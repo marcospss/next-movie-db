@@ -1,13 +1,11 @@
 import React from 'react';
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
 
-import { Figure } from './styles';
 
 import { Movie } from '@services/Movies';
 import { MoviesDetails } from '@models/movie';
 import { StatusErrors } from '@models/api';
 
-import LoaderAnimation from '@components/LoaderAnimation';
 // import { useFetchMoviePopular } from '@libs/movie';
 
 const movies = new Movie();
@@ -20,7 +18,6 @@ type DetailsProps = {
 const Details: NextPage<DetailsProps> = ({ details }) => {
   return (
     <>
-      {!details && <LoaderAnimation />}
       <h1>{details.title}</h1>
       <p>{details.overview}</p>
       <figure>
