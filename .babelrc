@@ -13,6 +13,14 @@
           "@libs": "./libs"
         }
       }
-    ]
+    ],
+    [	
+      "styled-components", 	
+      { 	
+        "ssr": true,	
+        "displayName": false,	
+        "preprocess": false	
+      }	
+    ]	
   ]
 }

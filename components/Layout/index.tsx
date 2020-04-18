@@ -1,6 +1,9 @@
 import * as React from 'react';
 import Head from 'next/head';
+import { ThemeProvider } from 'styled-components';
 
+import { Wrapper, Main } from './styles';
+import Theme from './theme';
 import HeaderGlobal from '@components/HeaderGlobal';
 import Footer from '@components/Footer';
 
@@ -15,9 +18,13 @@ const Layout: React.FC<Props> = ({ children, title = '' }) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
+    <ThemeProvider theme={Theme}>
+      <Wrapper>
         <HeaderGlobal />
-        {children}
+        <Main>{children}</Main>
         <Footer />
+      </Wrapper>
+    </ThemeProvider>
   </>
 );
 

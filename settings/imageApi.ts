@@ -1,4 +1,4 @@
-const imageSize = {
+const imageApi = {
   base_url: 'http://image.tmdb.org/t/p/',
   secure_base_url: 'https://image.tmdb.org/t/p/',
   backdrop_sizes: {
@@ -39,4 +39,4 @@ const imageSize = {
   },
 };
 
-export default imageSize;
+export default imageApi;

@@ -1,13 +1,24 @@
 export default {
-  fontFamily: ['Roboto', 'Open Sans', 'sans-serif', 'serif'],
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial',
+    'Noto Sans',
+    'sans-serif',
+  ],
   fontSizes: {
-    small: '1em',
+    small: '0.8rem',
     medium: '2em',
     large: '3em',
   },
   colors: {
-    bodyColor: '#131a20',
-    primaryColor: '#ffaa3c',
-    secondaryColor: '#ebebeb',
+    body: '#e8e8e8',
+    primary: '#2d3748',
+    secondary: '#e2e8f0',
+    third: '#1a202c',
+    fourth: '#0b2239',
   },
 };

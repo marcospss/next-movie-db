@@ -1,29 +1,31 @@
 import * as React from 'react';
 import Link from 'next/link';
 
+import { Header, Logo, Nav, List, NavItem } from './styles';
+
 const HeaderGlobal: React.FC = () => (
-  <header>
-    <h1>The Movie Database (TMDb)</h1>
-    <nav>
-      <ul>
-        <li>
+  <Header>
+    <Logo>The Movie Database (TMDb)</Logo>
+    <Nav>
+      <List>
+        <NavItem>
           <Link href="/">
             <a>Home</a>
           </Link>
-        </li>
-        <li>
+        </NavItem>
+        <NavItem>
           <Link href="/discover">
             <a>Discover</a>
           </Link>
-        </li>
-        <li>
+        </NavItem>
+        <NavItem>
           <Link href="/favorites">
             <a>Favorites</a>
           </Link>
-        </li>
-      </ul>
-    </nav>
-  </header>
+        </NavItem>
+      </List>
+    </Nav>
+  </Header>
 );
 
 export default HeaderGlobal;

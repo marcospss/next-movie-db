@@ -1,11 +1,28 @@
 import React from 'react';
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
+import Link from 'next/link';
 
-
+import Layout from '@components/Layout';
 import { Movie } from '@services/Movies';
 import { MoviesDetails } from '@models/movie';
 import { StatusErrors } from '@models/api';
+import imageApi from '@settings/imageApi';
 
+import {
+  Wrapper,
+  Article,
+  Backdrop,
+  Header,
+  GoBackHome,
+  Poster,
+  Title,
+  Info,
+  Category,
+  Rating,
+  Overview,
+  Similar,
+  Recommendations,
+} from './styles';
 // import { useFetchMoviePopular } from '@libs/movie';
 
 const movies = new Movie();
@@ -16,15 +33,44 @@ type DetailsProps = {
 };
 
 const Details: NextPage<DetailsProps> = ({ details }) => {
+  const { secure_base_url, backdrop_sizes, poster_sizes } = imageApi;
+  const genres = details && details.genres && details.genres.map(genre => genre.name).join(' | ');
   return (
-    <>
-      <h1>{details.title}</h1>
-      <p>{details.overview}</p>
-      <figure>
-        <img src={`https://image.tmdb.org/t/p/w92${details.poster_path}`} alt={details.title} />
-        <figcaption>{details.title}</figcaption>
-      </figure>
-    </>
+    <Layout>
+      <Wrapper>
+        <Article>
+          <GoBackHome>
+            <Link href="/">Back Home</Link>
+          </GoBackHome>
+          <Backdrop>
+            <img
+              src={`${secure_base_url}${backdrop_sizes.w780}${details.backdrop_path}`}
+              alt={details.title}
+            />
+          </Backdrop>
+          <Header>
+            <Poster>
+              <img
+                src={`${secure_base_url}${poster_sizes.w154}${details.poster_path}`}
+                alt={details.title}
+              />
+            </Poster>
+            <Info>
+              <Title>{details.title}</Title>
+              <Category>{genres}</Category>
+              <Rating>{details.vote_average}</Rating>
+            </Info>
+          </Header>
+          <Overview>{details.overview}</Overview>
+          <Similar>
+            <h2>Similar</h2>
+          </Similar>
+        </Article>
+        <Recommendations>
+          <h2>Recommendations</h2>
+        </Recommendations>
+      </Wrapper>
+    </Layout>
   );
 };
 
