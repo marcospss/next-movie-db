@@ -86,10 +86,11 @@ export const Title = styled.h1`
 export const Category = styled.p`
   width: 100%;
   margin: 10px 0;
+  font-weight: bold;
 `;
-export const Rating = styled.div`
-  width: 100%;
-  margin: 10px 0;
+export const Runtime = styled.p`
+  margin: 0;
+  font-weight: bold;
 `;
 
 export const Overview = styled.p`

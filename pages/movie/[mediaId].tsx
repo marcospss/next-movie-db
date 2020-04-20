@@ -18,14 +18,15 @@ import {
   Title,
   Info,
   Category,
-  Rating,
+  Runtime,
   Overview,
   SubTitle,
   Similar,
   Recommendations,
 } from './styles';
-import CardBackdropDescription from '@components/ui/CardBackdropDescription';
 import CardPosterDescription from '@components/ui/CardPosterDescription';
+import ImagePlaceholder from '@components/ui/ImagePlaceholder';
+import Rating from '@components/ui/Rating';
 // import { useFetchMoviePopular } from '@libs/movie';
 
 const movies = new Movie();
@@ -45,6 +46,14 @@ const countWords = (str: string) => {
   return resultsCount.split(' ').length;
 };
 
+const convertMinutesToTime = (data: number) => {
+  if (!data) { return; }
+  const minutes = data % 60;
+  const hours = (data - minutes) / 60;
+  const totalMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${hours}h ${totalMinutes}m`;
+};
+
 const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) => {
   const { secure_base_url, backdrop_sizes, poster_sizes } = imageApi;
   const genres = details && details.genres && details.genres.map(genre => genre.name).join(' | ');
@@ -55,13 +64,19 @@ const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) 
       <Wrapper>
         <Article>
           <GoBackHome>
-            <Link href="/">Back Home</Link>
+            <Link href="/">
+              <a>Back Home</a>
+            </Link>
           </GoBackHome>
           <Backdrop>
-            <img
-              src={`${secure_base_url}${backdrop_sizes.w780}${details.backdrop_path}`}
-              alt={details.title}
-            />
+            {details.backdrop_path ? (
+              <img
+                src={`${secure_base_url}${backdrop_sizes.w780}${details.backdrop_path}`}
+                alt={details.title}
+              />
+            ) : (
+              <ImagePlaceholder />
+            )}
           </Backdrop>
           <Header>
             <Poster>
@@ -73,14 +88,15 @@ const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) 
             <Info>
               <Title>{details.title}</Title>
               <Category>{genres}</Category>
-              <Rating>{details.vote_average}</Rating>
+              <Rating voteAverage={details.vote_average} />
+              <Runtime>Length: {details.runtime && convertMinutesToTime(details.runtime)}</Runtime>
             </Info>
           </Header>
           <Overview>{details.overview}</Overview>
-          <Similar>
-            <SubTitle>Similar</SubTitle>
-            {similarData && similarData.map((item) => {
-              return (
+          {similarData && !!similarData.length && (
+            <Similar>
+              <SubTitle>Similar</SubTitle>
+              {similarData.map(item => (
                 <CardPosterDescription
                   key={item.id}
                   id={item.id}
@@ -89,24 +105,25 @@ const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) 
                   overview={item.overview}
                   mediaType="movie"
                 />
-              );
-            })}
-          </Similar>
+              ))}
+            </Similar>
+          )}
         </Article>
-        <Recommendations>
-          <SubTitle>Recommendations</SubTitle>
-          {recommendationsData &&
-              recommendationsData.map(item => (
-                <CardPosterDescription
+        {recommendationsData && !!recommendationsData.length && (
+          <Recommendations>
+            <SubTitle>Recommendations</SubTitle>
+            {recommendationsData.map(item => (
+              <CardPosterDescription
                 key={item.id}
                 id={item.id}
                 poster_path={item.poster_path}
                 title={item.title}
                 overview={item.overview}
                 mediaType="movie"
-                />
-              ))}
-        </Recommendations>
+              />
+            ))}
+          </Recommendations>
+        )}
       </Wrapper>
     </Layout>
   );

@@ -20,15 +20,20 @@ const CardPosterDescription: React.FC<CardProps> = ({
   const Processedtitle = (title.length > 28) ? `${title.substring(0, 28)}...` : title;
   return (
     <Card>
-    <Link href={`/${mediaType}/[mediaId]`} as={`/${mediaType}/${id}`}>
       <Poster>
         {poster_path ? (
-          <img src={`${secure_base_url}${poster_sizes.w92}${poster_path}`} alt={title} />
+        <Link href={`/${mediaType}/[mediaId]`} as={`/${mediaType}/${id}`}>
+          <a>
+            <img
+              src={`${secure_base_url}${poster_sizes.w92}${poster_path}`}
+              alt={title}
+            />
+          </a>
+        </Link>
         ) : (
           <ImagePlaceholder />
         )}
       </Poster>
-    </Link>
     <Content>
       <Title>{Processedtitle}</Title>
       <Overview>{overview}</Overview>

@@ -20,16 +20,21 @@ const CardBackdropDescription: FC<CardProps> = ({
   const processedOverview = overview.length > 160 ? `${overview.substring(0, 156)}...` : overview;
   return (
     <Card>
-      <Link href={`/${mediaType}/[mediaId]`} as={`/${mediaType}/${id}`}>
-        <Figure>
-          {backdrop_path ? (
-            <img src={`${secure_base_url}${backdrop_sizes.w300}${backdrop_path}`} alt={title} />
-          ) : (
-            <ImagePlaceholder />
-          )}
-          <figcaption>{title}</figcaption>
-        </Figure>
-      </Link>
+          <Figure>
+            {backdrop_path ? (
+              <Link href={`/${mediaType}/[mediaId]`} as={`/${mediaType}/${id}`}>
+                <a>
+                  <img
+                    src={`${secure_base_url}${backdrop_sizes.w300}${backdrop_path}`}
+                    alt={title}
+                  />
+                </a>
+              </Link>
+            ) : (
+              <ImagePlaceholder />
+            )}
+            <figcaption>{title}</figcaption>
+          </Figure>
       <Overview>{processedOverview}</Overview>
       <LearnMore>
         <Link href={`/${mediaType}/[mediaId]`} as={`/${mediaType}/${id}`}>
