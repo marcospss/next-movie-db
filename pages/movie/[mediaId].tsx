@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import Layout from '@components/Layout';
 import { Movie } from '@services/Movies';
-import { MoviesDetails } from '@models/movie';
+import { MoviesDetails, MovieResults } from '@models/movie';
 import { StatusErrors } from '@models/api';
 import imageApi from '@settings/imageApi';
 
@@ -20,21 +20,36 @@ import {
   Category,
   Rating,
   Overview,
+  SubTitle,
   Similar,
   Recommendations,
 } from './styles';
+import CardBackdropDescription from '@components/ui/CardBackdropDescription';
+import CardPosterDescription from '@components/ui/CardPosterDescription';
 // import { useFetchMoviePopular } from '@libs/movie';
 
 const movies = new Movie();
 
 type DetailsProps = {
   details: MoviesDetails;
+  similar: MovieResults;
+  recommendations: MovieResults;
   error: StatusErrors;
 };
 
-const Details: NextPage<DetailsProps> = ({ details }) => {
+const countWords = (str: string) => {
+  let resultsCount;
+  resultsCount = str.replace(/(^\s*)|(\s*$)/gi, '');
+  resultsCount = str.replace(/[ ]{2,}/gi, ' ');
+  resultsCount = str.replace(/\n /, '\n');
+  return resultsCount.split(' ').length;
+};
+
+const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) => {
   const { secure_base_url, backdrop_sizes, poster_sizes } = imageApi;
   const genres = details && details.genres && details.genres.map(genre => genre.name).join(' | ');
+  const similarData = similar && similar.results;
+  const recommendationsData = recommendations && recommendations.results;
   return (
     <Layout>
       <Wrapper>
@@ -63,11 +78,34 @@ const Details: NextPage<DetailsProps> = ({ details }) => {
           </Header>
           <Overview>{details.overview}</Overview>
           <Similar>
-            <h2>Similar</h2>
+            <SubTitle>Similar</SubTitle>
+            {similarData && similarData.map((item) => {
+              return (
+                <CardPosterDescription
+                  key={item.id}
+                  id={item.id}
+                  poster_path={item.poster_path}
+                  title={item.title}
+                  overview={item.overview}
+                  mediaType="movie"
+                />
+              );
+            })}
           </Similar>
         </Article>
         <Recommendations>
-          <h2>Recommendations</h2>
+          <SubTitle>Recommendations</SubTitle>
+          {recommendationsData &&
+              recommendationsData.map(item => (
+                <CardPosterDescription
+                key={item.id}
+                id={item.id}
+                poster_path={item.poster_path}
+                title={item.title}
+                overview={item.overview}
+                mediaType="movie"
+                />
+              ))}
         </Recommendations>
       </Wrapper>
     </Layout>
@@ -87,9 +125,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const mediaId = params?.mediaId;
     const detailsResponse = await movies.details({ mediaId });
+    const similarResponse = await movies.similar({ mediaId });
+    const recommendationsResponse = await movies.recommendations({ mediaId });
     return {
       props: {
         details: detailsResponse.data,
+        similar: similarResponse.data,
+        recommendations: recommendationsResponse.data,
       },
     };
   } catch (error) {

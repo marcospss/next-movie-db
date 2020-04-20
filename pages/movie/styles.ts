@@ -36,7 +36,7 @@ export const GoBackHome = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 9;
   background-color: #fff6;
   /* border-top-left-radius: 1rem; */
   border-bottom-right-radius: 1rem;
@@ -98,20 +98,30 @@ export const Overview = styled.p`
   line-height: 20px;
 `;
 
+export const SubTitle = styled.h2`
+  margin: 1rem 0;
+  width: 100%;
+`;
+
 export const Similar = styled.section`
   position: relative;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 0px 40px;
 `;
 
 export const Recommendations = styled.aside`
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 30%;
   margin-left: 20px;
   padding: 0 20px;
-  overflow-y: auto;
-  background-color: #ccc;
+  background-color: #fff;
   border-radius: 1rem;
   overflow: hidden;
+  overflow-y: auto;
   position: relative;
 `;
