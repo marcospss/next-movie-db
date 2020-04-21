@@ -58,10 +58,16 @@ const convertMinutesToTime = (data: number) => {
 const Details: NextPage<DetailsProps> = ({ details, similar, recommendations, error }) => {
   const { secure_base_url, backdrop_sizes, poster_sizes } = imageApi;
   const genres = details && details.genres && details.genres.map(genre => genre.name).join(' | ');
+  const keywords = details && details.genres && details.genres.map(genre => genre.name).join(', ');
   const similarData = similar && similar.results;
   const recommendationsData = recommendations && recommendations.results;
   return (
-    <Layout>
+    <Layout
+      title={`${details.title} | The Movie Database (TMDb)`}
+      description={details.overview}
+      keywords={keywords}
+      image={`${secure_base_url}${backdrop_sizes.w780}${details.backdrop_path}`}
+    >
       <Wrapper>
         <Article>
           <GoBackHome>

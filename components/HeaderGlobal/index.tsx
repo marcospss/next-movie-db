@@ -14,12 +14,12 @@ const HeaderGlobal: React.FC = () => (
           </Link>
         </NavItem>
         {/* <NavItem>
-          <Link href="/discover">
+          <Link href="/discover" prefetch={false}>
             <a>Discover</a>
           </Link>
         </NavItem>
         <NavItem>
-          <Link href="/favorites">
+          <Link href="/favorites" prefetch={false}>
             <a>Favorites</a>
           </Link>
         </NavItem> */}
