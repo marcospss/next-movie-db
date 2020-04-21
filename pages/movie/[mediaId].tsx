@@ -23,6 +23,7 @@ import {
   SubTitle,
   Similar,
   Recommendations,
+  Scroll,
 } from './styles';
 import CardPosterDescription from '@components/ui/CardPosterDescription';
 import ImagePlaceholder from '@components/ui/ImagePlaceholder';
@@ -96,7 +97,27 @@ const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) 
           {similarData && !!similarData.length && (
             <Similar>
               <SubTitle>Similar</SubTitle>
-              {similarData.map(item => (
+              <Scroll height={350}>
+                {similarData.map(item => (
+                  <CardPosterDescription
+                    key={item.id}
+                    id={item.id}
+                    poster_path={item.poster_path}
+                    title={item.title}
+                    overview={item.overview}
+                    mediaType="movie"
+                    hideOverflowTitle={false}
+                  />
+                ))}
+              </Scroll>
+            </Similar>
+          )}
+        </Article>
+        {recommendationsData && !!recommendationsData.length && (
+          <Recommendations>
+            <SubTitle>Recommendations</SubTitle>
+              <Scroll height={1050}>
+              {recommendationsData.map(item => (
                 <CardPosterDescription
                   key={item.id}
                   id={item.id}
@@ -104,24 +125,10 @@ const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) 
                   title={item.title}
                   overview={item.overview}
                   mediaType="movie"
+                  hideOverflowTitle={true}
                 />
               ))}
-            </Similar>
-          )}
-        </Article>
-        {recommendationsData && !!recommendationsData.length && (
-          <Recommendations>
-            <SubTitle>Recommendations</SubTitle>
-            {recommendationsData.map(item => (
-              <CardPosterDescription
-                key={item.id}
-                id={item.id}
-                poster_path={item.poster_path}
-                title={item.title}
-                overview={item.overview}
-                mediaType="movie"
-              />
-            ))}
+            </Scroll>
           </Recommendations>
         )}
       </Wrapper>

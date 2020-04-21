@@ -11,7 +11,7 @@ export const Star = styled.div<StyledProps>`
   height: 25px;
   width: 100px;
   position: absolute;
-  top: 1rem;
+  top: -3rem;
   right: 2rem;
   text-shadow: 0 1px 0 #a2a2a2;
   &::before {

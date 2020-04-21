@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ScrollProps {
+  height: number;
+}
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -47,7 +51,7 @@ export const GoBackHome = styled.div`
     font-weight: bold;
     text-decoration: none;
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
   }
 `;
@@ -125,4 +129,13 @@ export const Recommendations = styled.aside`
   overflow: hidden;
   overflow-y: auto;
   position: relative;
+`;
+
+export const Scroll = styled.div<ScrollProps>`
+  display: block;
+  position: relative;
+  width: 100%;
+  height: ${({ height }) => `${height}px`};
+  overflow-x: auto;
+  padding-right: 20px;
 `;

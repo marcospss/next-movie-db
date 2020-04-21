@@ -11,13 +11,15 @@ type CardProps = {
   title: string;
   overview: string;
   mediaType: string;
+  hideOverflowTitle: boolean;
 };
 
 const CardPosterDescription: React.FC<CardProps> = ({
-    id, poster_path, title, overview, mediaType,
+    id, poster_path, title, overview, mediaType, hideOverflowTitle,
 }) => {
   const { secure_base_url, poster_sizes } = imageApi;
-  const Processedtitle = (title.length > 28) ? `${title.substring(0, 28)}...` : title;
+  const Processedtitle = (title.length > 28 && hideOverflowTitle)
+    ? `${title.substring(0, 28)}...` : title;
   return (
     <Card>
       <Poster>
