@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
+import { NextPage, GetServerSideProps } from 'next';
 import Link from 'next/link';
 
 import Layout from '@components/Layout';
@@ -55,7 +55,7 @@ const convertMinutesToTime = (data: number) => {
   return `${hours}h ${totalMinutes}m`;
 };
 
-const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) => {
+const Details: NextPage<DetailsProps> = ({ details, similar, recommendations, error }) => {
   const { secure_base_url, backdrop_sizes, poster_sizes } = imageApi;
   const genres = details && details.genres && details.genres.map(genre => genre.name).join(' | ');
   const similarData = similar && similar.results;
@@ -136,16 +136,16 @@ const Details: NextPage<DetailsProps> = ({ details, similar, recommendations }) 
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return {
-    fallback: false,
-    paths: [],
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   // We'll pre-render only these paths at build time.
+//   // { fallback: false } means other routes should 404.
+//   return {
+//     fallback: false,
+//     paths: [],
+//   };
+// };
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const mediaId = params?.mediaId;
     const detailsResponse = await movies.details({ mediaId });
@@ -156,11 +156,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         details: detailsResponse.data,
         similar: similarResponse.data,
         recommendations: recommendationsResponse.data,
+        error: null,
       },
     };
   } catch (error) {
     return {
       props: {
+        details: {},
+        similar: {},
+        recommendations: {},
         error: error?.response?.data,
       },
     };
