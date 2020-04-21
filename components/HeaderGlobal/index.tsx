@@ -13,7 +13,7 @@ const HeaderGlobal: React.FC = () => (
             <a>Home</a>
           </Link>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <Link href="/discover">
             <a>Discover</a>
           </Link>
@@ -22,7 +22,7 @@ const HeaderGlobal: React.FC = () => (
           <Link href="/favorites">
             <a>Favorites</a>
           </Link>
-        </NavItem>
+        </NavItem> */}
       </List>
     </Nav>
   </Header>
